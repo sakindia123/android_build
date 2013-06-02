@@ -46,9 +46,16 @@ $(combo_target)HAVE_STRLCPY := 0
 $(combo_target)HAVE_STRLCAT := 0
 $(combo_target)HAVE_KERNEL_MODULES := 0
 
+ifneq ($(TARGET_USE_O2),true)
 $(combo_target)GLOBAL_CFLAGS := -fno-exceptions -Wno-multichar
 $(combo_target)RELEASE_CFLAGS := -O2 -g -fno-strict-aliasing
-$(combo_target)GLOBAL_LDFLAGS :=
+else
+$(combo_target)GLOBAL_CFLAGS := -O3 -g -Wstrict-aliasing=2
+ifneq ($(combo_target),HOST_)
+(combo_target)RELEASE_CFLAGS += -Werror=strict-aliasing
+endif
+endif
+$(combo_target)GLOBAL_LDFLAGS := -Wl,-O2
 $(combo_target)GLOBAL_ARFLAGS := crsP
 
 $(combo_target)EXECUTABLE_SUFFIX :=
