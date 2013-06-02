@@ -24,7 +24,6 @@ PRODUCT_PACKAGES := \
     VideoEditor \
     WAPPushManager
 
-
 PRODUCT_PACKAGES += \
     libvideoeditor_jni \
     libvideoeditor_core \
@@ -50,7 +49,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.com.android.dateformat=MM-dd-yyyy
 
 # Put en_US first in the list, so make it default.
-PRODUCT_LOCALES := en_US
+PRODUCT_LOCALES := en_GB
 
 # Get some sounds
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
